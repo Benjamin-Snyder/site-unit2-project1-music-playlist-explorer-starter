@@ -8,7 +8,7 @@ body {
 
 #banner h1{
     color: black;
-    background-color: lightgray;
+    background-color: lightblue;
     padding:25px;
 }
 
@@ -50,6 +50,7 @@ body {
     row-gap:20px ;
     column-gap: 10px;
     place-items: center;
+    margin: 25px;
 
 
 }
@@ -59,5 +60,29 @@ body {
     padding: 20px;
     margin: 10px;
     align-content: center;
-    border: 10px black;
+    border: 3px solid black;
+    border-radius: 25px;
+}
+
+.show{
+    visibility: visible;
+}
+
+.hide{
+    visibility: hidden;
+}
+
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 400px;
+    border: 3px solid black;
+    background-color: white;
+    z-index: 1000;
 }
