@@ -48,11 +48,14 @@
                 </div>
             </article>
             <article class="playlistFromHome">
-                <div class = "box">
-                    <button><img src="./assets/img/playlist.png" alt="playlistPhoto" width="250px"></button>
-                    <h3>Playlist Title</h3>
-                    <h4>Playlist Author</h4>
-                </div>
+                <button class="button">
+                    <div class = "box">
+                        <img src="./assets/img/playlist.png" alt="playlistPhoto" width="250px">
+                        <h3>Playlist Title</h3>
+                        <h4>Playlist Author</h4>
+                    </div>
+                </button>
+
             </article>
             <article class="playlistFromHome">
                 <div class = "box">
@@ -78,30 +81,42 @@
 
 
 
-            <div class="popup">
-                <h2>POPUP</h2>
-                <img src="./assets/img/playlist.png" alt="popupAlbum" width="700px">
+            <div id="greyBox" class="hide">
 
-
-                <div class="songDisplay">
-                    <ul>
-                        <div class="eachSong">
-                            <img src="./assets/img/playlist.png" alt="miniAlbum" width="50px" height="50px">
-                            <h2>SongName1</h2>
-                            <h4>Artist</h4>
-                            <h4>Album</h4>
+                <div class="popup">
+                    <button class="close-btn">X</button>
+                    <img src="./assets/img/playlist.png" alt="popupAlbum" width="700px">
 
 
 
-                        </div>
-                        <div class="eachSong">
-                            <img src="./assets/img/playlist.png" alt="miniAlbum" width="50px" height="50px">
-                            <p>Song Name 2</p>
+                    <div class="songDisplay">
+                        <ul>
+                            <div class="eachSong">
+                                <img src="./assets/img/playlist.png" alt="miniAlbum" width="50px" height="50px">
+                                <div class="eachSongWords">
+                                    <h2>SongName1</h2>
+                                    <h4>Artist</h4>
+                                    <h4>Album</h4>
+                                </div>
 
-                        </div>
-                    </ul>
+                            </div>
+
+                            <div class="eachSong">
+                                <img src="./assets/img/playlist.png" alt="miniAlbum" width="50px" height="50px">
+                                <div class="eachSongWords">
+                                    <h2>SongName1</h2>
+                                    <h4>Artist</h4>
+                                    <h4>Album</h4>
+                                </div>
+
+                            </div>
+                        </ul>
+                    </div>
                 </div>
+
             </div>
+
+
 
 
         </div>
