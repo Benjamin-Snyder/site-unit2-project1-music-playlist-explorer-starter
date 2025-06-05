@@ -2,6 +2,7 @@
 let boxes = document.querySelectorAll(".box");
 let popupElem = document.querySelector("#greyBox");
 let closeBtn = document.querySelector(".close-btn");
+let boxIndex;
 
 boxes.forEach((box,index) => {
     box.addEventListener("click", function() { /* display the popup */
@@ -24,7 +25,7 @@ boxes.forEach((box,index) => {
 
         //let index= document.querySelector("p");
         console.log(index);
-
+        boxIndex = index;
     playlists[index].songs.forEach(song => {
         let temp = document.createElement("div");
         temp.classList.add("eachSong");
@@ -121,3 +122,53 @@ hearts.forEach((heart,index) => {
         playlists[index].likeCount = likeCount[index].textContent;
     })
 });
+
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+
+let shuffles = document.querySelectorAll(".shuffleButton");
+shuffles.forEach((shuffle, index) => {
+    shuffle.addEventListener("click", function() {
+        // Update the song display
+        let songContainer = document.querySelector(".songDisplay");
+        songContainer.innerHTML = ""; // Clear the song container
+
+        shuffleArray(playlists[boxIndex].songs);
+        console.log(boxIndex);
+
+        playlists[boxIndex].songs.forEach(song => {
+            let temp = document.createElement("div");
+            temp.classList.add("eachSong");
+
+            let songImg = document.createElement("img");
+            songImg.src = song.albumCover;
+
+            let songInfo = document.createElement("div");
+            songInfo.classList.add("eachSongWords");
+
+            let songTitle = document.createElement("h2");
+            songTitle.textContent = song.songName;
+
+            let songArtist = document.createElement("h4");
+            songArtist.textContent = song.artist;
+
+            let songLength = document.createElement("h4");
+            songLength.textContent = song.duration;
+
+            songInfo.appendChild(songTitle);
+            songInfo.appendChild(songArtist);
+            songInfo.appendChild(songLength);
+
+            temp.appendChild(songImg);
+            temp.appendChild(songInfo);
+
+            songContainer.appendChild(temp);
+        });
+    })
+})
