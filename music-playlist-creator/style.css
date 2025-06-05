@@ -69,6 +69,25 @@ body {
 }
 
 .box:hover{
+
+    transform: scale(1.07);
+    transition: transform 0.3s;
+
+
+}
+
+.delete:hover{
+    background-color: rgba(255, 0, 0, 0.2); /* Red tint with 20% opacity */
+}
+
+.deleteList{
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 25px;
+}
+
+
+.deleteList:hover{
     transform: scale(1.07);
     transition: transform 0.3s;
 }
@@ -81,22 +100,32 @@ body {
 
 }
 
-.albums{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    row-gap:20px ;
-    column-gap: 10px;
-    place-items: center;
+.bottomPortion{
+    display: flex;
+    flex-direction: row;
+}
+
+.bottomPortion .deleteList{
+    margin-right: 190px;
+}
+
+.bottomPortion .deleteList:hover{
+
+}
+
+.albums {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
     margin: 25px;
-
-
 }
 
 .box{
     background-color: lightblue;
     padding: 20px;
     margin: 10px;
-
+    position: relative;
     border: 3px solid black;
     border-radius: 25px;
     width: 300px;

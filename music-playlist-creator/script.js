@@ -4,9 +4,12 @@ let popupElem = document.querySelector("#greyBox");
 let closeBtn = document.querySelector(".close-btn");
 let boxIndex;
 
+let isDeleteMode = false;
+
 boxes.forEach((box,index) => {
     box.addEventListener("click", function() { /* display the popup */
-        if(!(event.target.classList.contains("heart"))) {
+
+        if(!(event.target.classList.contains("heart")) &&!(event.target.classList.contains("deleteList"))) {
 
 
         popupElem.classList.toggle("hide");
@@ -72,6 +75,15 @@ closeBtn.addEventListener("click", function() {
 
 });
 
+
+
+function test(){
+
+    let len = playlists.length;
+    for(let i =0; i<len; i++){
+
+    }
+}
 
 //boxes can be indexed
 //playlists can be indexed
@@ -172,6 +184,22 @@ shuffles.forEach((shuffle, index) => {
         });
     })
 })
+
+
+
+
+
+
+
+//let boxes = document.querySelectorAll(".box");
+    boxes.forEach((box) => {
+        const deleteButton = box.querySelector(".deleteList h2");
+        deleteButton.addEventListener("click", function(event) {
+            event.stopPropagation();
+            box.remove();
+        })
+    });
+
 
 
 
