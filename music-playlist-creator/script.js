@@ -177,9 +177,7 @@ shuffles.forEach((shuffle, index) => {
 
 
 let featuredButton = document.querySelector("#featureButton");
-
-
-
+let allButton = document.querySelector("#allButton");
 
 
 

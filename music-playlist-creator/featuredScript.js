@@ -1,8 +1,7 @@
 
 let allButton = document.querySelector("#allButton");
+let featuredButton = document.querySelector("#featuredButton");
 allButton.addEventListener("click", function() {
-    allButton.style.color = "blue";
-    featuredButton.style.color = "black";
     window.location.href = "./index.html";
 })
 
@@ -58,6 +57,7 @@ function setUpFeaturePage(){
 
 document.addEventListener("DOMContentLoaded", function() {
     setUpFeaturePage();
+    allButton.style.color = "black";
+    featuredButton.style.color = "blue";
+
 });
-
-
