@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Music Playlist Explorer</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <link rel="stylesheet" href="featuredStyle.css">
+</head>
+<body>
+
+
+    <header id="banner">
+        <!-- Your header content here -->
+        <a href="./index.html"> <h1>Music Playlist Explorer</h1></a>
+
+        <div class="featuredSelector">
+            <div id="featureButton">
+                <a href="./featured.html"><h2 >Featured</h2></a>
+            </div>
+            <div id="allButton" >
+                <a href="./index.html"><h2 >All</h2></a>
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <div class="featurePage">
+
+        <img src="./assets/img/playlist.png" alt="popupAlbum" width="700px" id="megaFeaturePhoto">
+
+        <div class="displayFeatureTitle">
+            <h1>Playlist Title</h1>
+        </div>
+
+        <div class="displayMaker">
+            <h1>Author</h1>
+        </div>
+
+        
+
+        <div class="songDisplay">
+            <ul>
+                <div class="eachSong">
+                    <img src="./assets/img/playlist.png" alt="miniAlbum" width="50px" height="50px">
+
+                    <div class="eachSongWords">
+                        <h2>SongName1</h2>
+                        <h4>Artist</h4>
+                        <h4>Duration</h4>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </div>
+
+
+    <script src="data/data.js"></script>
+    <script src="featuredScript.js"></script>
+
+</body>
+</html>

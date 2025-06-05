@@ -172,3 +172,19 @@ shuffles.forEach((shuffle, index) => {
         });
     })
 })
+
+
+
+
+let featuredButton = document.querySelector("#featureButton");
+
+
+
+
+
+
+featuredButton.addEventListener("click", function() {
+    featuredButton.style.color = "blue";
+    allButton.style.color = "black";
+    window.location.href = "./featured.html";
+})

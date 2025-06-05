@@ -1,0 +1,114 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+#banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    max-width: 100%;
+    box-sizing: border-box;
+    background-color: lightblue;
+}
+
+#banner h1{
+    color: black;
+    background-color: lightblue;
+    padding:25px;
+}
+
+.featuredSelector{
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+}
+
+.featuredSelector h2{
+    margin-left: 80px;
+}
+
+#featureButton{
+    color: black;
+}
+
+#allButton{
+    color: blue;
+}
+
+
+
+.featurePage {
+
+    display: flex;
+    padding: 50px;
+    border: 3px ;
+    background-color: white;
+    z-index: 1000;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+#megaFeaturePhoto{
+    height: 700px;
+    width: 700px;
+    
+}
+
+.featurePage img{
+    padding-bottom: 50px;
+    padding-right: 20px;
+}
+
+.eachSong{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding-right: 50px;
+
+}
+
+.songDisplay{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: auto;
+
+}
+
+.eachSong img{
+    padding: 10px;
+    height: 100px;
+    width:100px;
+}
+
+.eachSong h2{
+    font-size: 20px;
+
+}
+
+.eachSong h4{
+    font-size: 14px;
+}
+
+.displayFeatureTitle{
+    position: absolute;
+    top: 870px;
+}
+
+.displayMaker{
+    position: absolute;
+    top: 870px;
+    left: 560px;
+}
+
+.songDisplay{
+    overflow-y: auto;
+    height: 800px;
+
+    margin-left: 0px;
+}
