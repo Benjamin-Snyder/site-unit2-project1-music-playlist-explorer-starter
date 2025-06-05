@@ -1,89 +1,19 @@
-
 let boxes = document.querySelectorAll(".box");
 let popupElem = document.querySelector("#greyBox");
 let closeBtn = document.querySelector(".close-btn");
 let boxIndex;
 
-let isDeleteMode = false;
 
-boxes.forEach((box,index) => {
-    box.addEventListener("click", function() { /* display the popup */
-
-        if(!(event.target.classList.contains("heart")) &&!(event.target.classList.contains("deleteList"))) {
-
-
-        popupElem.classList.toggle("hide");
-        let bigImg = document.querySelector("#megaPhoto");
-        bigImg.src = box.querySelector("img").src;
-
-        let playlistTitle = document.querySelector(".displayTitle h1");
-        playlistTitle.textContent = playlists[index].playlist_name;
-
-        let playlistAuthor= document.querySelector(".displayMaker h1");
-        playlistAuthor.textContent = playlists[index].playlist_author;
-
-
-        let songContainer = document.querySelector(".songDisplay");
-        songContainer.innerHTML = ""; // clear the song container
-
-        //let index= document.querySelector("p");
-        console.log(index);
-        boxIndex = index;
-    playlists[index].songs.forEach(song => {
-        let temp = document.createElement("div");
-        temp.classList.add("eachSong");
-
-        let songImg = document.createElement("img");
-        songImg.src = song.albumCover;
-
-        let songInfo = document.createElement("div");
-        songInfo.classList.add("eachSomgWords");
-
-        let songTitle = document.createElement("h2");
-        songTitle.textContent = song.songName;
-
-        let songArtist = document.createElement("h4");
-        songArtist.textContent = song.artist;
-
-        let songLength = document.createElement("h4");
-        songLength.textContent = song.duration;
-
-
-        songInfo.appendChild(songTitle);
-        songInfo.appendChild(songArtist);
-        songInfo.appendChild(songLength);
-
-        temp.appendChild(songImg);
-        temp.appendChild(songInfo);
-
-        songContainer.appendChild(temp);
-
-    })
-        }
-
-    })
+document.addEventListener("DOMContentLoaded", function() {
+    importAlbums();
+    setFeaturedListener();
+    setShuffleListener();
+    setLikeCountListener();
+    setPopupListener();
+    setDeleteListener();
 });
 
 
-
-closeBtn.addEventListener("click", function() {
-    popupElem.classList.toggle("hide");
-
-    let songContainer = document.querySelector(".songDisplay");
-    songContainer.innerHTML = ""; // clear the song container
-
-
-});
-
-
-
-function test(){
-
-    let len = playlists.length;
-    for(let i =0; i<len; i++){
-
-    }
-}
 
 //boxes can be indexed
 //playlists can be indexed
@@ -106,15 +36,97 @@ function importAlbums(){
 }
 
 
-document.addEventListener("DOMContentLoaded", function() {
-    importAlbums();
-});
+
+function setDeleteListener() {
+    let boxes = document.querySelectorAll(".box");
+    boxes.forEach((box) => {
+        const deleteButton = box.querySelector(".deleteList h2");
+        deleteButton.addEventListener("click", function(event) {
+            event.stopPropagation();
+            box.remove();
+        });
+    });
+}
 
 
-let hearts = document.querySelectorAll(".heart");
-let likeCount = document.querySelectorAll(".count");
 
-hearts.forEach((heart,index) => {
+function setPopupListener(){
+
+    boxes.forEach((box,index) => {
+        box.addEventListener("click", function() { /* display the popup */
+            console.log("clicker");
+            if(!(event.target.classList.contains("heart"))) {
+
+
+            popupElem.classList.toggle("hide");
+            let bigImg = document.querySelector("#megaPhoto");
+            bigImg.src = box.querySelector("img").src;
+
+            let playlistTitle = document.querySelector(".displayTitle h1");
+            playlistTitle.textContent = playlists[index].playlist_name;
+
+            let playlistAuthor= document.querySelector(".displayMaker h1");
+            playlistAuthor.textContent = playlists[index].playlist_author;
+
+
+            let songContainer = document.querySelector(".songDisplay");
+            songContainer.innerHTML = ""; // clear the song container
+
+            //let index= document.querySelector("p");
+            console.log(index);
+            boxIndex = index;
+            playlists[index].songs.forEach(song => {
+            let temp = document.createElement("div");
+            temp.classList.add("eachSong");
+
+            let songImg = document.createElement("img");
+            songImg.src = song.albumCover;
+
+            let songInfo = document.createElement("div");
+            songInfo.classList.add("eachSomgWords");
+
+            let songTitle = document.createElement("h2");
+            songTitle.textContent = song.songName;
+
+            let songArtist = document.createElement("h4");
+            songArtist.textContent = song.artist;
+
+            let songLength = document.createElement("h4");
+            songLength.textContent = song.duration;
+
+
+            songInfo.appendChild(songTitle);
+            songInfo.appendChild(songArtist);
+            songInfo.appendChild(songLength);
+
+            temp.appendChild(songImg);
+            temp.appendChild(songInfo);
+
+            songContainer.appendChild(temp);
+
+        })
+            }
+
+        })
+    });
+
+
+    closeBtn.addEventListener("click", function() {
+        popupElem.classList.toggle("hide");
+
+        let songContainer = document.querySelector(".songDisplay");
+        songContainer.innerHTML = ""; // clear the song container
+
+
+    });
+
+}
+
+function setLikeCountListener(){
+    let hearts = document.querySelectorAll(".heart");
+    let likeCount = document.querySelectorAll(".count");
+
+    hearts.forEach((heart,index) => {
     heart.addEventListener("click", function() { /* display the popup */
 
 
@@ -135,17 +147,21 @@ hearts.forEach((heart,index) => {
     })
 });
 
-
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
 }
 
 
-let shuffles = document.querySelectorAll(".shuffleButton");
-shuffles.forEach((shuffle, index) => {
+
+function setShuffleListener(){
+
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+
+    let shuffles = document.querySelectorAll(".shuffleButton");
+    shuffles.forEach((shuffle, index) => {
     shuffle.addEventListener("click", function() {
         // Update the song display
         let songContainer = document.querySelector(".songDisplay");
@@ -184,33 +200,14 @@ shuffles.forEach((shuffle, index) => {
         });
     })
 })
+}
 
 
-
-
-
-
-
-//let boxes = document.querySelectorAll(".box");
-    boxes.forEach((box) => {
-        const deleteButton = box.querySelector(".deleteList h2");
-        deleteButton.addEventListener("click", function(event) {
-            event.stopPropagation();
-            box.remove();
-        })
-    });
-
-
-
-
-
-let featuredButton = document.querySelector("#featureButton");
-let allButton = document.querySelector("#allButton");
-
-
-
-featuredButton.addEventListener("click", function() {
-    featuredButton.style.color = "blue";
-    allButton.style.color = "black";
-    window.location.href = "./featured.html";
-})
+function setFeaturedListener(){
+    let featuredButton = document.querySelector("#featureButton");
+    featuredButton.addEventListener("click", function() {
+        featuredButton.style.color = "blue";
+        allButton.style.color = "black";
+        window.location.href = "./featured.html";
+    })
+}
