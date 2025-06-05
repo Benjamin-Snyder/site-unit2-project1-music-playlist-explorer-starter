@@ -4,6 +4,7 @@ let playlists = [
     playlist_name: "Chill Vibes",
     playlist_author: "DJ Chilly",
     playlist_art: "./assets/img/free-photo-of-breathtaking-coastal-view-in-puerto-de-la-cruz.jpeg",
+    likeCount: 10,
     songs: [
         {
         songName: "Banana Pancakes",
@@ -34,7 +35,71 @@ let playlists = [
         artist: "MGMT",
         duration: "3:49",
         albumCover: "./assets/img/free-photo-of-couple-admiring-scenic-mountain-view-outdoors.jpeg"
-        }
+        },
+
+
+
+        {
+            songName: "Stronger",
+            artist: "Kanye West",
+            duration: "5:11",
+            albumCover: "./assets/img/free-photo-of-intricate-stone-archway-in-historical-architecture.jpeg"
+            },
+            {
+            songName: "Eye of the Tiger",
+            artist: "Survivor",
+            duration: "4:05",
+            albumCover: "./assets/img/free-photo-of-plants-in-pots-by-the-window.jpeg"
+            },
+            {
+            songName: "Can't Hold Us",
+            artist: "Macklemore & Ryan Lewis",
+            duration: "4:18",
+            albumCover: "./assets/img/free-photo-of-rustic-bread-and-fruit-on-a-dining-table.jpeg"
+            },
+            {
+            songName: "Remember The Name",
+            artist: "Fort Minor",
+            duration: "3:50",
+            albumCover: "./assets/img/free-photo-of-scenic-mediterranean-village-with-sea-view.jpeg"
+            },
+            {
+            songName: "Power",
+            artist: "Kanye West",
+            duration: "4:52",
+            albumCover: "./assets/img/free-photo-of-scenic-view-of-boat-on-ocean-from-carvoeiro-cave.jpeg"
+            },
+            {
+                songName: "Blinding Lights",
+                artist: "The Weeknd",
+                duration: "3:20",
+                albumCover: "./assets/img/pexels-photo-12715153.jpeg"
+                },
+                {
+                songName: "Levitating",
+                artist: "Dua Lipa",
+                duration: "3:23",
+                albumCover: "./assets/img/pexels-photo-29875053.jpeg"
+                },
+                {
+                songName: "Shape of You",
+                artist: "Ed Sheeran",
+                duration: "3:53",
+                albumCover: "./assets/img/pexels-photo-30613412.jpeg"
+                },
+                {
+                songName: "Don't Start Now",
+                artist: "Dua Lipa",
+                duration: "3:03",
+                albumCover: "./assets/img/pexels-photo-31976170.jpeg"
+                },
+                {
+                songName: "Watermelon Sugar",
+                artist: "Harry Styles",
+                duration: "2:54",
+                albumCover: "./assets/img/pexels-photo-31977035.jpeg"
+                }
+
     ]
     },
     {
@@ -42,6 +107,7 @@ let playlists = [
     playlist_name: "Workout Pump",
     playlist_author: "FitBeats",
     playlist_art: "./assets/img/free-photo-of-empty-beach-with-a-lifeguard-tower.jpeg",
+    likeCount: 98,
     songs: [
         {
         songName: "Stronger",
@@ -80,6 +146,7 @@ let playlists = [
     playlist_name: "Classic Rock",
     playlist_author: "RockMaster",
     playlist_art: "./assets/img/free-photo-of-scenic-view-of-lake-bled-with-church.jpeg",
+    likeCount: 12,
     songs: [
         {
         songName: "Stairway to Heaven",
@@ -118,6 +185,7 @@ let playlists = [
     playlist_name: "Pop Hits",
     playlist_author: "TopCharts",
     playlist_art: "./assets/img/pexels-photo-11734026.jpeg",
+    likeCount: 1,
     songs: [
         {
         songName: "Blinding Lights",
@@ -156,6 +224,7 @@ let playlists = [
     playlist_name: "Jazz Essentials",
     playlist_author: "SmoothJazz",
     playlist_art: "./assets/img/pexels-photo-30613412.jpeg",
+    likeCount: 52,
     songs: [
         {
         songName: "So What",
@@ -191,9 +260,10 @@ let playlists = [
     },
     {
     playlistID: 6,
-    playlist_name: "Hip-Hop Classics",
+    playlist_name: "Hip-Hop",
     playlist_author: "RapGod",
     playlist_art: "./assets/img/free-photo-of-barbary-macaque-on-the-rock-of-gibraltar.jpeg",
+    likeCount: 63,
     songs: [
         {
         songName: "Juicy",
@@ -229,9 +299,10 @@ let playlists = [
     },
     {
     playlistID: 7,
-    playlist_name: "Electronic Beats",
+    playlist_name: "Electronic",
     playlist_author: "DJ Electro",
     playlist_art: "./assets/img/free-photo-of-stunning-view-of-half-dome-in-yosemite-national-park.jpeg",
+    likeCount: 80,
     songs: [
         {
         songName: "One More Time",
@@ -270,6 +341,7 @@ let playlists = [
     playlist_name: "Indie Faves",
     playlist_author: "IndieLover",
     playlist_art: "./assets/img/free-photo-of-charming-trulli-houses-in-alberobello-italy.jpeg",
+    likeCount: 1,
     songs: [
         {
         songName: "Dog Days Are Over",
