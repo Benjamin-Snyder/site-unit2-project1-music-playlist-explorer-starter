@@ -76,6 +76,12 @@ body {
     font-size: 50px;
 }
 
+#searchBar{
+    display: flex;
+    flex-direction: row;
+    margin-left: 15px;
+}
+
 
 /*/////////////// Home Page Style ///////////////////////////////*/
 

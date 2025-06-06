@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", function() {
     setSortListeners();
     setAddPlaylistListener()
     setAddPlaylistButtonListener();
+    setSearchListener();
+    setSearchClearListener();
 });
 
 
@@ -21,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
 //boxes can be indexed
 //playlists can be indexed
 function importAlbums([playlist]){
+
     let boxImg = document.querySelectorAll(".box img");
     let boxTitle = document.querySelectorAll(".box h3");
     let boxArtist = document.querySelectorAll(".box h4");
@@ -36,6 +39,8 @@ function importAlbums([playlist]){
 
     }
 }
+
+
 
 
 
@@ -66,6 +71,148 @@ function setAddPlaylistListener(){
     })
 }
 
+
+
+
+/*
+function addPlaylistExtra(playlist_name, playlist_author, playlist_art, songs, playlistID, likeCount, dateAdded) {
+    let newPlaylist = {
+        playlist_name: playlist_name,
+        playlist_author: playlist_author,
+        playlist_art: playlist_art,
+        likeCount: likeCount,
+        dateAdded: dateAdded,
+        playlistID: playlistID,
+        songs: songs
+    };
+
+    playlists.push(newPlaylist);
+
+    // Im a big idiot and made the way the albums are initally imported poorly so I have to manullary add a new one
+    const albumContainer = document.querySelector(".albums");
+
+    const article = document.createElement("article");
+    article.classList.add("playlistFromHome");
+
+    const box = document.createElement("div");
+    box.classList.add("box");
+
+    const img = document.createElement("img");
+    img.src = newPlaylist.playlist_art;
+    img.alt = "playlistPhoto";
+    img.width = 250;
+    img.classList.add("imgHome");
+
+    const title = document.createElement("h3");
+    title.textContent = newPlaylist.playlist_name;
+
+    const author = document.createElement("h4");
+    author.textContent = newPlaylist.playlist_author;
+
+    const bottomPortion = document.createElement("div");
+    bottomPortion.classList.add("bottomPortion");
+
+    const deleteList = document.createElement("div");
+    deleteList.classList.add("deleteList");
+    const deleteIcon = document.createElement("h2");
+    deleteIcon.textContent = "🗑️";
+    deleteList.appendChild(deleteIcon);
+
+    const likeCount = document.createElement("div");
+    likeCount.classList.add("likeCount");
+    const heart = document.createElement("p");
+    heart.classList.add("heart", "noLike");
+    heart.textContent = "🖤";
+    const count = document.createElement("p");
+    count.classList.add("count");
+    count.textContent = newPlaylist.likeCount;
+    likeCount.appendChild(heart);
+    likeCount.appendChild(count);
+
+    bottomPortion.appendChild(deleteList);
+    bottomPortion.appendChild(likeCount);
+
+    const id = document.createElement("p");
+    id.classList.add("ID");
+    id.textContent = newPlaylist.playlistID;
+
+    box.appendChild(img);
+    box.appendChild(title);
+    box.appendChild(author);
+    box.appendChild(bottomPortion);
+    box.appendChild(id);
+
+    article.appendChild(box);
+    albumContainer.appendChild(article);
+
+    // Attach event listeners to the new elements
+    deleteIcon.addEventListener("click", function(event) {
+        event.stopPropagation();
+        box.remove();
+    });
+
+    heart.addEventListener("click", function() {
+        if (heart.classList.contains("noLike")) {
+            heart.textContent = "❤️";
+            heart.classList.remove("noLike");
+            heart.classList.add("liked");
+            count.textContent = parseInt(count.textContent) + 1;
+        } else {
+            heart.textContent = "🖤";
+            heart.classList.remove("liked");
+            heart.classList.add("noLike");
+            count.textContent = parseInt(count.textContent) - 1;
+        }
+        newPlaylist.likeCount = count.textContent;
+    });
+
+    box.addEventListener("click", function(event) {
+        if (!(event.target.classList.contains("heart")) && !(event.target.closest(".deleteList"))) {
+            popupElem.classList.toggle("hide");
+            let bigImg = document.querySelector("#megaPhoto");
+            bigImg.src = box.querySelector("img").src;
+
+            let playlistTitle = document.querySelector(".displayTitle h1");
+            playlistTitle.textContent = newPlaylist.playlist_name;
+
+            let playlistAuthor = document.querySelector(".displayMaker h1");
+            playlistAuthor.textContent = newPlaylist.playlist_author;
+
+            let songContainer = document.querySelector(".songDisplay");
+            songContainer.innerHTML = ""; // clear the song container
+
+            newPlaylist.songs.forEach(song => {
+                let temp = document.createElement("div");
+                temp.classList.add("eachSong");
+
+                let songImg = document.createElement("img");
+                songImg.src = song.albumCover;
+
+                let songInfo = document.createElement("div");
+                songInfo.classList.add("eachSongWords");
+
+                let songTitle = document.createElement("h2");
+                songTitle.textContent = song.songName;
+
+                let songArtist = document.createElement("h4");
+                songArtist.textContent = song.artist;
+
+                let songLength = document.createElement("h4");
+                songLength.textContent = song.duration;
+
+                songInfo.appendChild(songTitle);
+                songInfo.appendChild(songArtist);
+                songInfo.appendChild(songLength);
+
+                temp.appendChild(songImg);
+                temp.appendChild(songInfo);
+
+                songContainer.appendChild(temp);
+            });
+        }
+    });
+}
+*/
 
 function addPlaylist(playlist_name, playlist_author, playlist_art, songs) {
     let newPlaylist = {
@@ -474,4 +621,74 @@ function setAddPlaylistButtonListener() {
         document.querySelector("#sNameInput").value = "";
         document.querySelector("#sArtistInput").value = "";
     });
+}
+
+
+function setSearchListener(){
+    let searchButton = document.querySelector("#searchButton");
+    let searchInput = document.querySelector("#searchBar input");
+
+    searchButton.addEventListener("click", function(event){
+        event.preventDefault(); // Prevent default form submission
+        let term = document.querySelector("#searchBar input").value;
+        console.log(term);
+        importAlbums(playlists);
+        searchSong(term);
+    })
+
+    searchInput.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault(); // Prevent default form submission
+            let term = document.querySelector("#searchBar input").value;
+            console.log(term);
+            importAlbums(playlists);
+            searchSong(term);
+        }
+    });
+}
+
+/*
+function searchSong(term){
+    let show = [];
+    let boxes = document.querySelectorAll(".box");
+    boxes.forEach(playlist => {
+        let boxName = playlist.querySelector("h3").textContent;
+        if(boxName.toLowerCase().includes(term.toLowerCase()) ||
+            boxName.toLowerCase().includes(term.toLowerCase())){
+                show.push(playlist);
+        }
+        else{
+            playlist.remove();
+        }
+    })
+    console.log(show);
+
+    importAlbums(show);
+}
+*/
+
+function searchSong(term) {
+    let boxes = document.querySelectorAll(".box");
+
+    boxes.forEach(box => {
+        let boxName = box.querySelector("h3").textContent;
+        let boxArtist = box.querySelector("h4").textContent;
+
+        if (boxName.toLowerCase().includes(term.toLowerCase()) || boxArtist.toLowerCase().includes(term.toLowerCase())) {
+        }
+        else{
+            box.remove();
+        }
+    })
+}
+
+function setSearchClearListener(){
+    let clearButton = document.querySelector("#clearButton");
+
+    clearButton.addEventListener("click", function(event){
+        event.preventDefault();
+        document.querySelector("#searchBar input").value = "";
+        window.location.reload();
+
+    })
 }
