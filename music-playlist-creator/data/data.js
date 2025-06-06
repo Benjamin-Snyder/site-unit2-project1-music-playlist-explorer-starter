@@ -189,7 +189,7 @@ let playlists = [
     playlist_author: "TopCharts",
     playlist_art: "./assets/img/pexels-photo-11734026.jpeg",
     likeCount: 1,
-    dateAdded: "2025-10-10",
+    dateAdded: "2025-01-10",
     songs: [
         {
         songName: "Blinding Lights",

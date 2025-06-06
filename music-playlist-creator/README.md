@@ -5,7 +5,7 @@ Submitted by: Ben Snyder
 
 Estimated time spent: 15 hours spent in total
 
-Deployed Application (**required**): [Music Playlist Explorer Deployed Site](ADD_LINK_HERE)
+Deployed Application (**required**): [Music Playlist Explorer Deployed Site](https://benplaylistexplorer.onrender.com)
 
 ### Application Features
 

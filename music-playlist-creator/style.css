@@ -5,6 +5,18 @@ body {
     background-color: rgb(227, 241, 246);
 }
 
+#bottomBanner {
+    display: block;
+    height: 20px;
+    background-color: lightblue;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+
 #banner {
     display: flex;
     justify-content: space-between;
@@ -59,7 +71,17 @@ body {
 }
 
 
+#addPlaylistButton h2{
+    border: 2px solid black;
+    padding: 5px;
+    border-radius: 10px;
+    margin-left: 100px;
+}
 
+#addPlaylistButton:hover{
+    transform: scale(1.07);
+    transition: transform 0.3s;
+}
 
 
 .playlistFromHome h3{
@@ -272,3 +294,61 @@ body {
     margin-top: 0px;
     justify-content: flex-end;
 }
+
+
+
+
+
+#addPopup {
+    position: fixed;
+    top: 20%;
+    left: 20%;
+    margin: auto;
+    background-color: white;
+    padding: 300px;
+    border: 2px solid black;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 30%;
+    left: 25%;
+    margin-top: 50px;
+
+}
+#addPopup h1{
+    position: relative;
+    top: -260px;
+
+}
+
+.addPlaylistButton{
+    margin-top: 50px;
+}
+
+.addPlaylistButton button{
+    font-size: 50px;
+}
+
+input{
+    margin-bottom: 15px;
+}
+.songAdd{
+    margin-top: 90px;
+}
+
+/*
+#addGreyBox{
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 900;
+    overflow: auto;
+    position: fixed;
+
+}
+*/

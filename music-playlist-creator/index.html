@@ -21,12 +21,16 @@
             <div id="AZ">
                 <h2>A-Z</h2>
             </div>
-            <div id="Likes">
+            <div id="Likes" class="selected">
                 <h2>Like Count</h2>
             </div>
             <div id="Age">
                 <h2>Date Added</h2>
             </div>
+        </div>
+
+        <div id="addPlaylistButton">
+            <h2>ADD</h2>
         </div>
 
 
@@ -41,11 +45,12 @@
 
 
 
-
     </header>
 
     <main>
         <!-- Your main content here -->
+
+<!-- inital playlists shown on home screen -->
         <div class = "albums">
             <article class="playlistFromHome">
                 <div class = "box">
@@ -61,8 +66,6 @@
                             <p class="count">0</p>
                         </div>
                     </div>
-
-
                     <p class="ID">1</p>
                 </div>
             </article>
@@ -118,7 +121,6 @@
                 </div>
             </article>
             <article class="playlistFromHome">
-
                     <div class = "box">
                         <img src="./assets/img/playlist.png" alt="playlistPhoto" width="250px" class="imgHome">
                         <h3>Playlist Title</h3>
@@ -134,8 +136,6 @@
                         </div>
                         <p class="ID">5</p>
                     </div>
-
-
             </article>
             <article class="playlistFromHome">
                 <div class = "box">
@@ -152,7 +152,6 @@
                         </div>
                     </div>
                     <p class="ID">6</p>
-
                 </div>
             </article>
             <article class="playlistFromHome">
@@ -189,9 +188,10 @@
                     <p class="ID">8</p>
                 </div>
             </article>
+<!-- -->
 
 
-
+<!-- Album Info Modal -->
             <div id="greyBox" class="hide">
 
                 <div class="popup">
@@ -226,8 +226,49 @@
                 </div>
 
             </div>
+<!--  -->
 
 
+<!-- Album Add Modal -->
+    <div id="addGreyBox">
+        <div id="addPopup" class="hide">
+            <h1>Add Playlist</h1>
+            <form>
+                <div class="inputPlaylistName">
+                    <label for="Pname">Playlist Name</label>
+                    <input type="text" id="pNameInput">
+                </div>
+                <div class="inputAuthor">
+                    <label for="Aname">Author</label>
+                    <input type="text" id="aNameInput">
+                </div>
+                <div class="inputImg">
+                    <label for="PImg">Playlist Cover</label>
+                    <input type="file" id="pImgInput">
+                </div>
+
+
+
+                <div class="songAdd">
+                    <label for="songName">Song Name</label>
+                    <input type="text" id="sNameInput">
+
+                    <label for="songArtist">Song Artist</label>
+                    <input type="text" id="sArtistInput">
+
+                </div>
+
+                <button id="addSongButton" type="button">Add Song</button>
+
+                <div class="addPlaylistButton">
+                    <button>Submit</button>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+<!-- -->
 
 
 
@@ -237,8 +278,9 @@
 
     </main>
 
-    <footer>
+    <footer id="bottomBanner">
         <!-- Your footer content here -->
+        <!-- footer is just a bar -->
     </footer>
     <script src="data/data.js"></script>
     <script src="script.js"></script>
