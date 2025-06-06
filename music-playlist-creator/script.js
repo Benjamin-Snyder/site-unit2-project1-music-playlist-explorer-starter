@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
     setAddPlaylistButtonListener();
     setSearchListener();
     setSearchClearListener();
+    setEditListener();
 });
 
 
@@ -430,7 +431,7 @@ function setPopupListener(){
     boxes.forEach((box,index) => {
         box.addEventListener("click", function() { /* display the popup */
 
-            if(!(event.target.classList.contains("heart"))) {
+            if(!(target.classList.contains("heart"))) {
 
 
             popupElem.classList.toggle("hide");
@@ -447,7 +448,7 @@ function setPopupListener(){
             let songContainer = document.querySelector(".songDisplay");
             songContainer.innerHTML = ""; // clear the song container
 
-            //let index= document.querySelector("p");
+
             boxIndex = index;
             playlists[index].songs.forEach(song => {
             let temp = document.createElement("div");
@@ -631,7 +632,6 @@ function setSearchListener(){
     searchButton.addEventListener("click", function(event){
         event.preventDefault(); // Prevent default form submission
         let term = document.querySelector("#searchBar input").value;
-        console.log(term);
         importAlbums(playlists);
         searchSong(term);
     })
@@ -640,32 +640,68 @@ function setSearchListener(){
         if (event.key === "Enter") {
             event.preventDefault(); // Prevent default form submission
             let term = document.querySelector("#searchBar input").value;
-            console.log(term);
             importAlbums(playlists);
             searchSong(term);
         }
     });
 }
 
-/*
-function searchSong(term){
-    let show = [];
+function setEditListener() {
+    let buttons = document.querySelectorAll(".editButton");
     let boxes = document.querySelectorAll(".box");
-    boxes.forEach(playlist => {
-        let boxName = playlist.querySelector("h3").textContent;
-        if(boxName.toLowerCase().includes(term.toLowerCase()) ||
-            boxName.toLowerCase().includes(term.toLowerCase())){
-                show.push(playlist);
-        }
-        else{
-            playlist.remove();
-        }
-    })
-    console.log(show);
 
-    importAlbums(show);
+    buttons.forEach((button, index) => {
+        button.addEventListener("click", function(event) {
+            event.stopPropagation();
+
+            let box = boxes[index];
+            let titleElement = box.querySelector("h3");
+            let authorElement = box.querySelector("h4");
+
+            let titleInput = document.createElement("input");
+            titleInput.type = "text";
+            titleInput.value = titleElement.textContent;
+            titleInput.placeholder = "Enter Playlist Name";
+
+            let authorInput = document.createElement("input");
+            authorInput.type = "text";
+            authorInput.value = authorElement.textContent;
+            authorInput.placeholder = "Enter Author Name";
+
+            titleElement.replaceWith(titleInput);
+            authorElement.replaceWith(authorInput);
+
+            titleInput.focus();
+
+
+            titleInput.addEventListener("keydown", function(event) {
+                if (event.key === "Enter") {
+                    updateTitleAndAuthor(titleInput, authorInput, titleElement, authorElement, index);
+                }
+            });
+
+            authorInput.addEventListener("keydown", function(event) {
+                if (event.key === "Enter") {
+                    updateTitleAndAuthor(titleInput, authorInput, titleElement, authorElement, index);
+                }
+            });
+        });
+    });
 }
-*/
+
+function updateTitleAndAuthor(titleInput, authorInput, titleElement, authorElement, index) {
+    titleElement.textContent = titleInput.value;
+    authorElement.textContent = authorInput.value;
+    titleInput.replaceWith(titleElement);
+    authorInput.replaceWith(authorElement);
+    playlists[index].playlist_name = titleInput.value;
+    playlists[index].playlist_author = authorInput.value;
+}
+
+
+
+
+
 
 function searchSong(term) {
     let boxes = document.querySelectorAll(".box");

@@ -141,11 +141,30 @@ body {
 .bottomPortion{
     display: flex;
     flex-direction: row;
+
 }
 
+/*
 .bottomPortion .deleteList{
     margin-right: 190px;
 }
+*/
+
+.bottomPortion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px;
+}
+
+.deleteList, .editButton, .likeCount {
+    display: flex;
+    align-items: center;
+    margin-left: 60px;
+
+}
+
+
 
 .deleteList{
     margin-left: auto;
@@ -171,6 +190,9 @@ body {
     visibility: hidden;
 }
 
+.editButton{
+    font-size: 25px;
+}
 
 /*////////////// Album Info Modal Style ///////////////*/
 
