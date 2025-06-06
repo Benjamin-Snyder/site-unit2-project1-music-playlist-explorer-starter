@@ -426,66 +426,54 @@ function setDeleteListener() {
 
 
 
-function setPopupListener(){
+function setPopupListener() {
+    boxes.forEach((box, index) => {
+        box.addEventListener("click", function(event) {
+            if (!(event.target.classList.contains("heart")) && !(event.target.closest(".deleteList"))) {
+                popupElem.classList.toggle("hide");
+                let bigImg = document.querySelector("#megaPhoto");
+                bigImg.src = box.querySelector("img").src;
 
-    boxes.forEach((box,index) => {
-        box.addEventListener("click", function() { /* display the popup */
+                let playlistTitle = document.querySelector(".displayTitle h1");
+                playlistTitle.textContent = playlists[index].playlist_name;
 
-            if(!(target.classList.contains("heart"))) {
+                let playlistAuthor = document.querySelector(".displayMaker h1");
+                playlistAuthor.textContent = playlists[index].playlist_author;
 
+                let songContainer = document.querySelector(".songDisplay");
+                songContainer.innerHTML = ""; // clear the song container
 
-            popupElem.classList.toggle("hide");
-            let bigImg = document.querySelector("#megaPhoto");
-            bigImg.src = box.querySelector("img").src;
+                playlists[index].songs.forEach(song => {
+                    let temp = document.createElement("div");
+                    temp.classList.add("eachSong");
 
-            let playlistTitle = document.querySelector(".displayTitle h1");
-            playlistTitle.textContent = playlists[index].playlist_name;
+                    let songImg = document.createElement("img");
+                    songImg.src = song.albumCover;
 
-            let playlistAuthor= document.querySelector(".displayMaker h1");
-            playlistAuthor.textContent = playlists[index].playlist_author;
+                    let songInfo = document.createElement("div");
+                    songInfo.classList.add("eachSongWords");
 
+                    let songTitle = document.createElement("h2");
+                    songTitle.textContent = song.songName;
 
-            let songContainer = document.querySelector(".songDisplay");
-            songContainer.innerHTML = ""; // clear the song container
+                    let songArtist = document.createElement("h4");
+                    songArtist.textContent = song.artist;
 
+                    let songLength = document.createElement("h4");
+                    songLength.textContent = song.duration;
 
-            boxIndex = index;
-            playlists[index].songs.forEach(song => {
-            let temp = document.createElement("div");
-            temp.classList.add("eachSong");
+                    songInfo.appendChild(songTitle);
+                    songInfo.appendChild(songArtist);
+                    songInfo.appendChild(songLength);
 
-            let songImg = document.createElement("img");
-            songImg.src = song.albumCover;
+                    temp.appendChild(songImg);
+                    temp.appendChild(songInfo);
 
-            let songInfo = document.createElement("div");
-            songInfo.classList.add("eachSongWords");
-
-            let songTitle = document.createElement("h2");
-            songTitle.textContent = song.songName;
-
-            let songArtist = document.createElement("h4");
-            songArtist.textContent = song.artist;
-
-            let songLength = document.createElement("h4");
-            songLength.textContent = song.duration;
-
-
-            songInfo.appendChild(songTitle);
-            songInfo.appendChild(songArtist);
-            songInfo.appendChild(songLength);
-
-            temp.appendChild(songImg);
-            temp.appendChild(songInfo);
-
-            songContainer.appendChild(temp);
-
-        })
+                    songContainer.appendChild(temp);
+                });
             }
-
-        })
+        });
     });
-
-
     closeBtn.addEventListener("click", function() {
         popupElem.classList.toggle("hide");
 
@@ -494,8 +482,8 @@ function setPopupListener(){
 
 
     });
-
 }
+
 
 function setLikeCountListener(){
     let hearts = document.querySelectorAll(".heart");
