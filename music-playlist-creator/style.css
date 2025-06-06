@@ -5,17 +5,7 @@ body {
     background-color: rgb(227, 241, 246);
 }
 
-#bottomBanner {
-    display: block;
-    height: 20px;
-    background-color: lightblue;
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-
+/*/////////////////// Header Style //////////////////////*/
 
 #banner {
     display: flex;
@@ -31,6 +21,21 @@ body {
     color: black;
     background-color: lightblue;
     padding:25px;
+}
+
+.sortOptions{
+    display: flex;
+    flex-direction: row;
+}
+
+.sortOptions h2{
+    border: 2px solid black;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.selected h2{
+    background-color:rgb(227, 241, 246);
 }
 
 .featuredSelector{
@@ -51,26 +56,6 @@ body {
     color: blue;
 }
 
-
-.sortOptions{
-    display: flex;
-    flex-direction: row;
-
-
-}
-
-.sortOptions h2{
-    border: 2px solid black;
-    padding: 5px;
-    border-radius: 10px;
-}
-
-
-.selected h2{
-    background-color:rgb(227, 241, 246);
-}
-
-
 #addPlaylistButton h2{
     border: 2px solid black;
     padding: 5px;
@@ -83,20 +68,28 @@ body {
     transition: transform 0.3s;
 }
 
+.addPlaylistButton{
+    margin-top: 50px;
+}
 
-.playlistFromHome h3{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
+.addPlaylistButton button{
+    font-size: 50px;
 }
 
 
+/*/////////////// Home Page Style ///////////////////////////////*/
+
+.albums {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    margin: 25px;
+}
 
 .box h3 h4{
     display: flex;
     justify-content: flex-start;
-
 }
 
 .box h3{
@@ -111,15 +104,41 @@ body {
 }
 
 .box:hover{
-
     transform: scale(1.07);
     transition: transform 0.3s;
-
-
 }
 
-.delete:hover{
-    background-color: rgba(255, 0, 0, 0.2); /* Red tint with 20% opacity */
+.box{
+    background-color: lightblue;
+    padding: 20px;
+    margin: 10px;
+    position: relative;
+    border: 3px solid black;
+    border-radius: 25px;
+    width: 300px;
+    height: 450px;
+}
+
+.playlistFromHome h3{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.imgHome{
+    width:250px ;
+    height: 250px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.bottomPortion{
+    display: flex;
+    flex-direction: row;
+}
+
+.bottomPortion .deleteList{
+    margin-right: 190px;
 }
 
 .deleteList{
@@ -134,60 +153,36 @@ body {
     transition: transform 0.3s;
 }
 
-.imgHome{
-    width:250px ;
-    height: 250px;
-    margin-left: 20px;
-    margin-top: 20px;
-
-}
-
-.bottomPortion{
+.likeCount{
+    font-size: 40px;
     display: flex;
     flex-direction: row;
+    margin-top: 0px;
+    justify-content: flex-end;
 }
-
-.bottomPortion .deleteList{
-    margin-right: 190px;
-}
-
-.bottomPortion .deleteList:hover{
-
-}
-
-.albums {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
-    margin: 25px;
-}
-
-.box{
-    background-color: lightblue;
-    padding: 20px;
-    margin: 10px;
-    position: relative;
-    border: 3px solid black;
-    border-radius: 25px;
-    width: 300px;
-    height: 450px;
-}
-
-.show{
-    visibility: visible;
-}
-
-.hide{
-    visibility: hidden;
-}
-
 
 .ID{
     visibility: hidden;
 }
 
 
+/*////////////// Album Info Modal Style ///////////////*/
+
+#greyBox{
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    z-index: 900;
+    overflow: auto;
+    position: fixed;
+}
+
+#megaPhoto{
+    height: 700px;
+    width: 700px;
+}
 
 .popup {
     position: fixed;
@@ -203,52 +198,18 @@ body {
     justify-content: flex-start;
 }
 
-#megaPhoto{
-    height: 700px;
-    width: 700px;
-}
-
 .popup img{
     padding-bottom: 50px;
     padding-right: 20px;
 }
 
-.eachSong{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    padding-right: 50px;
-
+.show{
+    visibility: visible;
 }
 
-.songDisplay{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-left: auto;
-
+.hide{
+    visibility: hidden;
 }
-
-.eachSong img{
-    padding: 10px;
-    height: 50px;
-    width:50px;
-}
-
-#greyBox{
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    z-index: 900;
-    overflow: auto;
-    position: fixed;
-
-}
-
-
 
 .close-btn {
     position: absolute;
@@ -259,15 +220,6 @@ body {
     font-size: 20px;
     cursor: pointer;
     z-index: 1100;
-}
-
-.eachSong h2{
-    font-size: 10px;
-
-}
-
-.eachSong h4{
-    font-size: 7px;
 }
 
 .displayTitle{
@@ -281,23 +233,46 @@ body {
     left: 560px;
 }
 
-
 .songDisplay{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: auto;
     overflow-y: auto;
     height: 800px;
 }
 
-.likeCount{
-    font-size: 40px;
+.eachSong{
     display: flex;
     flex-direction: row;
-    margin-top: 0px;
-    justify-content: flex-end;
+    justify-content: flex-start;
+    align-items: center;
+    padding-right: 50px;
+}
+
+.eachSong img{
+    padding: 10px;
+    height: 50px;
+    width:50px;
+}
+
+.eachSong h2{
+    font-size: 10px;
+}
+
+.eachSong h4{
+    font-size: 7px;
 }
 
 
+/*////////////// Add Playlist Modal Style /////////////////*/
 
-
+input{
+    margin-bottom: 15px;
+}
+.songAdd{
+    margin-top: 90px;
+}
 
 #addPopup {
     position: fixed;
@@ -309,6 +284,11 @@ body {
     border: 2px solid black;
 }
 
+#addPopup h1{
+    position: relative;
+    top: -260px;
+}
+
 form{
     display: flex;
     flex-direction: column;
@@ -316,39 +296,27 @@ form{
     top: 30%;
     left: 25%;
     margin-top: 50px;
-
 }
-#addPopup h1{
+
+
+
+
+/*//////////// Footer Style /////////////*/
+
+#bottomBanner {
+    display: block;
+    height: 20px;
+    background-color: lightblue;
     position: relative;
-    top: -260px;
-
-}
-
-.addPlaylistButton{
-    margin-top: 50px;
-}
-
-.addPlaylistButton button{
-    font-size: 50px;
-}
-
-input{
-    margin-bottom: 15px;
-}
-.songAdd{
-    margin-top: 90px;
-}
-
-/*
-#addGreyBox{
+    z-index: 1;
     width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background-color: rgba(0,0,0,0.4);
-    z-index: 900;
-    overflow: auto;
-    position: fixed;
-
+    box-sizing: border-box;
 }
-*/
+
+
+
+
+
+.delete:hover{
+    background-color: rgba(255, 0, 0, 0.2); /* Red tint with 20% opacity */
+}
