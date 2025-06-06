@@ -2,7 +2,7 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f8f8f8;
+    background-color: rgb(227, 241, 246);
 }
 
 #banner {
@@ -38,6 +38,26 @@ body {
 #allButton{
     color: blue;
 }
+
+
+.sortOptions{
+    display: flex;
+    flex-direction: row;
+
+
+}
+
+.sortOptions h2{
+    border: 2px solid black;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+
+.selected h2{
+    background-color:rgb(227, 241, 246);
+}
+
 
 
 

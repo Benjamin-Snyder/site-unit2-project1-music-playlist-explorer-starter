@@ -148,7 +148,7 @@ let playlists = [
     playlist_name: "Classic Rock",
     playlist_author: "RockMaster",
     playlist_art: "./assets/img/free-photo-of-scenic-view-of-lake-bled-with-church.jpeg",
-    likeCount: 12,
+    likeCount: 0,
     dateAdded: "2022-01-16",
     songs: [
         {

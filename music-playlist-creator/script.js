@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
     setLikeCountListener();
     setPopupListener();
     setDeleteListener();
+    setSortListeners();
 });
 
 
@@ -66,6 +67,35 @@ function sortDate(playlist){
 }
 
 
+function setSortListeners(){
+    let AZ = document.getElementById("AZ");
+    let Likes = document.getElementById("Likes");
+    let Age = document.getElementById("Age");
+
+    AZ.addEventListener("click", function(){
+        AZ.classList.add("selected");
+        Likes.classList.remove("selected");
+        Age.classList.remove("selected");
+        sortAZ(playlists);
+    })
+
+    Likes.addEventListener("click", function(){
+        Likes.classList.add("selected");
+        AZ.classList.remove("selected");
+        Age.classList.remove("selected");
+        sortLikeCount(playlists);
+    })
+
+    Age.addEventListener("click", function(){
+        Age.classList.add("selected");
+        Likes.classList.remove("selected");
+        AZ.classList.remove("selected");
+        sortDate(playlists);
+    })
+
+}
+
+
 function setDeleteListener() {
     let boxes = document.querySelectorAll(".box");
     boxes.forEach((box) => {
@@ -112,7 +142,7 @@ function setPopupListener(){
             songImg.src = song.albumCover;
 
             let songInfo = document.createElement("div");
-            songInfo.classList.add("eachSomgWords");
+            songInfo.classList.add("eachSongWords");
 
             let songTitle = document.createElement("h2");
             songTitle.textContent = song.songName;
