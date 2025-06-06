@@ -5,6 +5,7 @@ let playlists = [
     playlist_author: "DJ Chilly",
     playlist_art: "./assets/img/free-photo-of-breathtaking-coastal-view-in-puerto-de-la-cruz.jpeg",
     likeCount: 10,
+    dateAdded: "2022-01-01",
     songs: [
         {
         songName: "Banana Pancakes",
@@ -108,6 +109,7 @@ let playlists = [
     playlist_author: "FitBeats",
     playlist_art: "./assets/img/free-photo-of-empty-beach-with-a-lifeguard-tower.jpeg",
     likeCount: 98,
+    dateAdded: "2022-01-02",
     songs: [
         {
         songName: "Stronger",
@@ -147,6 +149,7 @@ let playlists = [
     playlist_author: "RockMaster",
     playlist_art: "./assets/img/free-photo-of-scenic-view-of-lake-bled-with-church.jpeg",
     likeCount: 12,
+    dateAdded: "2022-01-16",
     songs: [
         {
         songName: "Stairway to Heaven",
@@ -186,6 +189,7 @@ let playlists = [
     playlist_author: "TopCharts",
     playlist_art: "./assets/img/pexels-photo-11734026.jpeg",
     likeCount: 1,
+    dateAdded: "2025-10-10",
     songs: [
         {
         songName: "Blinding Lights",
@@ -225,6 +229,7 @@ let playlists = [
     playlist_author: "SmoothJazz",
     playlist_art: "./assets/img/pexels-photo-30613412.jpeg",
     likeCount: 52,
+    dateAdded: "2022-03-23",
     songs: [
         {
         songName: "So What",
@@ -264,6 +269,7 @@ let playlists = [
     playlist_author: "RapGod",
     playlist_art: "./assets/img/free-photo-of-barbary-macaque-on-the-rock-of-gibraltar.jpeg",
     likeCount: 63,
+    dateAdded: "2022-03-20",
     songs: [
         {
         songName: "Juicy",
@@ -303,6 +309,7 @@ let playlists = [
     playlist_author: "DJ Electro",
     playlist_art: "./assets/img/free-photo-of-stunning-view-of-half-dome-in-yosemite-national-park.jpeg",
     likeCount: 80,
+    dateAdded: "2023-03-20",
     songs: [
         {
         songName: "One More Time",
@@ -342,6 +349,7 @@ let playlists = [
     playlist_author: "IndieLover",
     playlist_art: "./assets/img/free-photo-of-charming-trulli-houses-in-alberobello-italy.jpeg",
     likeCount: 1,
+    dateAdded: "2022-03-20",
     songs: [
         {
         songName: "Dog Days Are Over",

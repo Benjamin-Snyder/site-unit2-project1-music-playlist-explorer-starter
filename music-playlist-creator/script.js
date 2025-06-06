@@ -5,7 +5,8 @@ let boxIndex;
 
 
 document.addEventListener("DOMContentLoaded", function() {
-    importAlbums();
+    importAlbums(playlists);
+    //sortDate(playlists);
     setFeaturedListener();
     setShuffleListener();
     setLikeCountListener();
@@ -17,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //boxes can be indexed
 //playlists can be indexed
-function importAlbums(){
+function importAlbums([playlist]){
     let boxImg = document.querySelectorAll(".box img");
     console.log("here");
     let boxTitle = document.querySelectorAll(".box h3");
@@ -35,6 +36,34 @@ function importAlbums(){
     }
 }
 
+
+function sortAZ(playlist){
+    let sorted = playlist.sort((a,b) =>{
+        if(a.playlist_name < b.playlist_name)return -1;
+        if(a.playlist_name > b.playlist_name)return 1;
+        return 0;
+    });
+    importAlbums(sorted);
+}
+
+function sortLikeCount(playlist){
+    let sorted =  playlist.sort((a,b) => {
+        if(a.likeCount < b.likeCount) return 1;
+        if(a.likeCount > b.likeCount) return -1;
+        return 0;
+    })
+    importAlbums(sorted);
+}
+
+
+function sortDate(playlist){
+    let sorted = playlist.sort((a,b)=>{
+        if(a.dateAdded < b.dateAdded) return 1;
+        if(a.dateAdded > b.dateAdded) return -1;
+        return 0;
+    })
+    importAlbums(sorted);
+}
 
 
 function setDeleteListener() {
