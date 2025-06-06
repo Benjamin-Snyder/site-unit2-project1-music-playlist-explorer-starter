@@ -426,11 +426,46 @@ function setDeleteListener() {
 
 
 
+
+
+
+function setLikeCountListener(){
+    let hearts = document.querySelectorAll(".heart");
+    let likeCount = document.querySelectorAll(".count");
+
+    hearts.forEach((heart,index) => {
+    heart.addEventListener("click", function() { /* display the popup */
+
+
+        if(heart.classList.contains("noLike")){
+            heart.textContent= "❤️"
+            heart.classList.remove("noLike");
+            heart.classList.add("liked");
+            likeCount[index].textContent = parseInt(likeCount[index].textContent) + 1;
+        }
+        else if ( heart.classList.contains("liked")){
+            heart.textContent= "🖤"
+            heart.classList.remove("liked");
+            heart.classList.add("noLike");
+            likeCount[index].textContent = parseInt(likeCount[index].textContent) - 1;
+
+        }
+        playlists[index].likeCount = likeCount[index].textContent;
+    })
+});
+
+}
+
+let popAvail = true;
+
+
 function setPopupListener() {
     boxes.forEach((box, index) => {
         box.addEventListener("click", function(event) {
-            if (!(event.target.classList.contains("heart")) && !(event.target.closest(".deleteList"))) {
+
+            if (!(event.target.classList.contains("heart")) && !(event.target.closest(".deleteList")) && popAvail) {
                 popupElem.classList.toggle("hide");
+                boxIndex = index; // keep track of the index of the box that was clicked
                 let bigImg = document.querySelector("#megaPhoto");
                 bigImg.src = box.querySelector("img").src;
 
@@ -441,7 +476,7 @@ function setPopupListener() {
                 playlistAuthor.textContent = playlists[index].playlist_author;
 
                 let songContainer = document.querySelector(".songDisplay");
-                songContainer.innerHTML = ""; // clear the song container
+                songContainer.innerHTML = "";
 
                 playlists[index].songs.forEach(song => {
                     let temp = document.createElement("div");
@@ -478,44 +513,13 @@ function setPopupListener() {
         popupElem.classList.toggle("hide");
 
         let songContainer = document.querySelector(".songDisplay");
-        songContainer.innerHTML = ""; // clear the song container
+        songContainer.innerHTML = "";
 
 
     });
 }
 
-
-function setLikeCountListener(){
-    let hearts = document.querySelectorAll(".heart");
-    let likeCount = document.querySelectorAll(".count");
-
-    hearts.forEach((heart,index) => {
-    heart.addEventListener("click", function() { /* display the popup */
-
-
-        if(heart.classList.contains("noLike")){
-            heart.textContent= "❤️"
-            heart.classList.remove("noLike");
-            heart.classList.add("liked");
-            likeCount[index].textContent = parseInt(likeCount[index].textContent) + 1;
-        }
-        else if ( heart.classList.contains("liked")){
-            heart.textContent= "🖤"
-            heart.classList.remove("liked");
-            heart.classList.add("noLike");
-            likeCount[index].textContent = parseInt(likeCount[index].textContent) - 1;
-
-        }
-        playlists[index].likeCount = likeCount[index].textContent;
-    })
-});
-
-}
-
-
-
-function setShuffleListener(){
-
+function setShuffleListener() {
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -523,46 +527,50 @@ function setShuffleListener(){
         }
     }
 
-    let shuffles = document.querySelectorAll(".shuffleButton");
-    shuffles.forEach((shuffle, index) => {
-    shuffle.addEventListener("click", function() {
-        // Update the song display
-        let songContainer = document.querySelector(".songDisplay");
-        songContainer.innerHTML = ""; // Clear the song container
+    let shuffleImages = document.querySelectorAll(".shuffleButton img");
+    shuffleImages.forEach((shuffleImage) => {
+        shuffleImage.addEventListener("click", function() {
+            if (typeof boxIndex !== 'undefined') {
 
-        shuffleArray(playlists[boxIndex].songs);
+                shuffleArray(playlists[boxIndex].songs);
 
-        playlists[boxIndex].songs.forEach(song => {
-            let temp = document.createElement("div");
-            temp.classList.add("eachSong");
 
-            let songImg = document.createElement("img");
-            songImg.src = song.albumCover;
+                let songContainer = document.querySelector(".songDisplay");
+                songContainer.innerHTML = "";
 
-            let songInfo = document.createElement("div");
-            songInfo.classList.add("eachSongWords");
+                playlists[boxIndex].songs.forEach(song => {
+                    let temp = document.createElement("div");
+                    temp.classList.add("eachSong");
 
-            let songTitle = document.createElement("h2");
-            songTitle.textContent = song.songName;
+                    let songImg = document.createElement("img");
+                    songImg.src = song.albumCover;
 
-            let songArtist = document.createElement("h4");
-            songArtist.textContent = song.artist;
+                    let songInfo = document.createElement("div");
+                    songInfo.classList.add("eachSongWords");
 
-            let songLength = document.createElement("h4");
-            songLength.textContent = song.duration;
+                    let songTitle = document.createElement("h2");
+                    songTitle.textContent = song.songName;
 
-            songInfo.appendChild(songTitle);
-            songInfo.appendChild(songArtist);
-            songInfo.appendChild(songLength);
+                    let songArtist = document.createElement("h4");
+                    songArtist.textContent = song.artist;
 
-            temp.appendChild(songImg);
-            temp.appendChild(songInfo);
+                    let songLength = document.createElement("h4");
+                    songLength.textContent = song.duration;
 
-            songContainer.appendChild(temp);
+                    songInfo.appendChild(songTitle);
+                    songInfo.appendChild(songArtist);
+                    songInfo.appendChild(songLength);
+
+                    temp.appendChild(songImg);
+                    temp.appendChild(songInfo);
+
+                    songContainer.appendChild(temp);
+                });
+            }
         });
-    })
-})
+    });
 }
+
 
 
 function setFeaturedListener(){
@@ -641,7 +649,7 @@ function setEditListener() {
     buttons.forEach((button, index) => {
         button.addEventListener("click", function(event) {
             event.stopPropagation();
-
+            popAvail= false;
             let box = boxes[index];
             let titleElement = box.querySelector("h3");
             let authorElement = box.querySelector("h4");
@@ -665,16 +673,19 @@ function setEditListener() {
             titleInput.addEventListener("keydown", function(event) {
                 if (event.key === "Enter") {
                     updateTitleAndAuthor(titleInput, authorInput, titleElement, authorElement, index);
+                    popAvail = true;
                 }
             });
 
             authorInput.addEventListener("keydown", function(event) {
                 if (event.key === "Enter") {
                     updateTitleAndAuthor(titleInput, authorInput, titleElement, authorElement, index);
+                    popAvail = true;
                 }
             });
         });
     });
+
 }
 
 function updateTitleAndAuthor(titleInput, authorInput, titleElement, authorElement, index) {
