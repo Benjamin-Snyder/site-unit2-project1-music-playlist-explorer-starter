@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
     setSearchListener();
     setSearchClearListener();
     setEditListener();
+
 });
 
 
@@ -45,23 +46,7 @@ function importAlbums([playlist]){
 
 
 
-/*
-function testAdd(){
-    addPlaylist("TEst", "BEn", "./assets/img/free-photo-of-barbary-macaque-on-the-rock-of-gibraltar.jpeg",[
-        {
-        songName: "Juicy",
-        artist: "The Notorious B.I.G.",
-        duration: "5:02",
-        albumCover: "./assets/img/free-photo-of-plants-in-pots-by-the-window.jpeg"
-        },
-        {
-        songName: "Nuthin' But A 'G' Thang",
-        artist: "Dr. Dre",
-        duration: "4:01",
-        albumCover: "./assets/img/free-photo-of-rustic-bread-and-fruit-on-a-dining-table.jpeg"
-        }])
-}
-*/
+
 
 function setAddPlaylistListener(){
     let button = document.getElementById("addPlaylistButton");
@@ -76,145 +61,6 @@ function setAddPlaylistListener(){
 
 
 /*
-function addPlaylistExtra(playlist_name, playlist_author, playlist_art, songs, playlistID, likeCount, dateAdded) {
-    let newPlaylist = {
-        playlist_name: playlist_name,
-        playlist_author: playlist_author,
-        playlist_art: playlist_art,
-        likeCount: likeCount,
-        dateAdded: dateAdded,
-        playlistID: playlistID,
-        songs: songs
-    };
-
-    playlists.push(newPlaylist);
-
-    // Im a big idiot and made the way the albums are initally imported poorly so I have to manullary add a new one
-    const albumContainer = document.querySelector(".albums");
-
-    const article = document.createElement("article");
-    article.classList.add("playlistFromHome");
-
-    const box = document.createElement("div");
-    box.classList.add("box");
-
-    const img = document.createElement("img");
-    img.src = newPlaylist.playlist_art;
-    img.alt = "playlistPhoto";
-    img.width = 250;
-    img.classList.add("imgHome");
-
-    const title = document.createElement("h3");
-    title.textContent = newPlaylist.playlist_name;
-
-    const author = document.createElement("h4");
-    author.textContent = newPlaylist.playlist_author;
-
-    const bottomPortion = document.createElement("div");
-    bottomPortion.classList.add("bottomPortion");
-
-    const deleteList = document.createElement("div");
-    deleteList.classList.add("deleteList");
-    const deleteIcon = document.createElement("h2");
-    deleteIcon.textContent = "🗑️";
-    deleteList.appendChild(deleteIcon);
-
-    const likeCount = document.createElement("div");
-    likeCount.classList.add("likeCount");
-    const heart = document.createElement("p");
-    heart.classList.add("heart", "noLike");
-    heart.textContent = "🖤";
-    const count = document.createElement("p");
-    count.classList.add("count");
-    count.textContent = newPlaylist.likeCount;
-    likeCount.appendChild(heart);
-    likeCount.appendChild(count);
-
-    bottomPortion.appendChild(deleteList);
-    bottomPortion.appendChild(likeCount);
-
-    const id = document.createElement("p");
-    id.classList.add("ID");
-    id.textContent = newPlaylist.playlistID;
-
-    box.appendChild(img);
-    box.appendChild(title);
-    box.appendChild(author);
-    box.appendChild(bottomPortion);
-    box.appendChild(id);
-
-    article.appendChild(box);
-    albumContainer.appendChild(article);
-
-    // Attach event listeners to the new elements
-    deleteIcon.addEventListener("click", function(event) {
-        event.stopPropagation();
-        box.remove();
-    });
-
-    heart.addEventListener("click", function() {
-        if (heart.classList.contains("noLike")) {
-            heart.textContent = "❤️";
-            heart.classList.remove("noLike");
-            heart.classList.add("liked");
-            count.textContent = parseInt(count.textContent) + 1;
-        } else {
-            heart.textContent = "🖤";
-            heart.classList.remove("liked");
-            heart.classList.add("noLike");
-            count.textContent = parseInt(count.textContent) - 1;
-        }
-        newPlaylist.likeCount = count.textContent;
-    });
-
-    box.addEventListener("click", function(event) {
-        if (!(event.target.classList.contains("heart")) && !(event.target.closest(".deleteList"))) {
-            popupElem.classList.toggle("hide");
-            let bigImg = document.querySelector("#megaPhoto");
-            bigImg.src = box.querySelector("img").src;
-
-            let playlistTitle = document.querySelector(".displayTitle h1");
-            playlistTitle.textContent = newPlaylist.playlist_name;
-
-            let playlistAuthor = document.querySelector(".displayMaker h1");
-            playlistAuthor.textContent = newPlaylist.playlist_author;
-
-            let songContainer = document.querySelector(".songDisplay");
-            songContainer.innerHTML = ""; // clear the song container
-
-            newPlaylist.songs.forEach(song => {
-                let temp = document.createElement("div");
-                temp.classList.add("eachSong");
-
-                let songImg = document.createElement("img");
-                songImg.src = song.albumCover;
-
-                let songInfo = document.createElement("div");
-                songInfo.classList.add("eachSongWords");
-
-                let songTitle = document.createElement("h2");
-                songTitle.textContent = song.songName;
-
-                let songArtist = document.createElement("h4");
-                songArtist.textContent = song.artist;
-
-                let songLength = document.createElement("h4");
-                songLength.textContent = song.duration;
-
-                songInfo.appendChild(songTitle);
-                songInfo.appendChild(songArtist);
-                songInfo.appendChild(songLength);
-
-                temp.appendChild(songImg);
-                temp.appendChild(songInfo);
-
-                songContainer.appendChild(temp);
-            });
-        }
-    });
-}
-*/
-
 function addPlaylist(playlist_name, playlist_author, playlist_art, songs) {
     let newPlaylist = {
         playlist_name: playlist_name,
@@ -258,6 +104,15 @@ function addPlaylist(playlist_name, playlist_author, playlist_art, songs) {
     deleteIcon.textContent = "🗑️";
     deleteList.appendChild(deleteIcon);
 
+
+    const editButton = document.createElement("div");
+    editButton.classList.add("editButton");
+    const editIcon = document.createElement("h2");
+    editIcon.textContent = "📝";
+    editButton.appendChild(editIcon);
+
+
+
     const likeCount = document.createElement("div");
     likeCount.classList.add("likeCount");
     const heart = document.createElement("p");
@@ -270,6 +125,196 @@ function addPlaylist(playlist_name, playlist_author, playlist_art, songs) {
     likeCount.appendChild(count);
 
     bottomPortion.appendChild(deleteList);
+    bottomPortion.appendChild(editButton);
+    bottomPortion.appendChild(likeCount);
+
+
+    const id = document.createElement("p");
+    id.classList.add("ID");
+    id.textContent = newPlaylist.playlistID;
+
+    box.appendChild(img);
+    box.appendChild(title);
+    box.appendChild(author);
+    box.appendChild(bottomPortion);
+    box.appendChild(id);
+
+    article.appendChild(box);
+    albumContainer.appendChild(article);
+
+    // event listeners
+    deleteIcon.addEventListener("click", function(event) {
+        event.stopPropagation();
+        box.remove();
+    });
+
+    heart.addEventListener("click", function() {
+        if (heart.classList.contains("noLike")) {
+            heart.textContent = "❤️";
+            heart.classList.remove("noLike");
+            heart.classList.add("liked");
+            count.textContent = parseInt(count.textContent) + 1;
+        } else {
+            heart.textContent = "🖤";
+            heart.classList.remove("liked");
+            heart.classList.add("noLike");
+            count.textContent = parseInt(count.textContent) - 1;
+        }
+        newPlaylist.likeCount = count.textContent
+    });
+
+    box.addEventListener("click", function(event) {
+        if (!(event.target.classList.contains("heart")) && !(event.target.closest(".deleteList"))) {
+            popupElem.classList.toggle("hide");
+            let bigImg = document.querySelector("#megaPhoto");
+            bigImg.src = box.querySelector("img").src;
+
+            let playlistTitle = document.querySelector(".displayTitle h1");
+            playlistTitle.textContent = newPlaylist.playlist_name;
+
+            let playlistAuthor = document.querySelector(".displayMaker h1");
+            playlistAuthor.textContent = newPlaylist.playlist_author;
+
+            let songContainer = document.querySelector(".songDisplay");
+            songContainer.innerHTML = ""; // clear the song container
+
+            newPlaylist.songs.forEach(song => {
+                let temp = document.createElement("div");
+                temp.classList.add("eachSong");
+
+                let songImg = document.createElement("img");
+                songImg.src = song.albumCover;
+
+                let songInfo = document.createElement("div");
+                songInfo.classList.add("eachSongWords");
+
+                let songTitle = document.createElement("h2");
+                songTitle.textContent = song.songName;
+
+                let songArtist = document.createElement("h4");
+                songArtist.textContent = song.artist;
+
+                let songLength = document.createElement("h4");
+                songLength.textContent = song.duration;
+
+                songInfo.appendChild(songTitle);
+                songInfo.appendChild(songArtist);
+                songInfo.appendChild(songLength);
+
+                temp.appendChild(songImg);
+                temp.appendChild(songInfo);
+
+                songContainer.appendChild(temp);
+            });
+        }
+    });
+
+
+
+
+        editButton.addEventListener("click", function(event) {
+            event.stopPropagation();
+            popAvail= false;
+            let box = boxes[index];
+            let titleElement = box.querySelector("h3");
+            let authorElement = box.querySelector("h4");
+
+            let titleInput = document.createElement("input");
+            titleInput.type = "text";
+            titleInput.value = titleElement.textContent;
+            titleInput.placeholder = "Enter Playlist Name";
+
+            let authorInput = document.createElement("input");
+            authorInput.type = "text";
+            authorInput.value = authorElement.textContent;
+            authorInput.placeholder = "Enter Author Name";
+
+            titleElement.replaceWith(titleInput);
+            authorElement.replaceWith(authorInput);
+
+            titleInput.focus();
+
+
+            titleInput.addEventListener("keydown", function(event) {
+                if (event.key === "Enter") {
+                    updateTitleAndAuthor(titleInput, authorInput, titleElement, authorElement, index);
+                    popAvail = true;
+                }
+            });
+
+            authorInput.addEventListener("keydown", function(event) {
+                if (event.key === "Enter") {
+                    updateTitleAndAuthor(titleInput, authorInput, titleElement, authorElement, index);
+                    popAvail = true;
+                }
+            });
+        });
+
+
+}
+*/
+
+function addPlaylist(playlist_name, playlist_author, playlist_art, songs) {
+    let newPlaylist = {
+        playlist_name: playlist_name,
+        playlist_author: playlist_author,
+        playlist_art: playlist_art,
+        likeCount: 0,
+        dateAdded: new Date().toISOString().split('T')[0],
+        playlistID: playlists.length + 1,
+        songs: songs
+    };
+
+    playlists.push(newPlaylist);
+
+    const albumContainer = document.querySelector(".albums");
+
+    const article = document.createElement("article");
+    article.classList.add("playlistFromHome");
+
+    const box = document.createElement("div");
+    box.classList.add("box");
+
+    const img = document.createElement("img");
+    img.src = newPlaylist.playlist_art;
+    img.alt = "playlistPhoto";
+    img.width = 250;
+    img.classList.add("imgHome");
+
+    const title = document.createElement("h3");
+    title.textContent = newPlaylist.playlist_name;
+
+    const author = document.createElement("h4");
+    author.textContent = newPlaylist.playlist_author;
+
+    const bottomPortion = document.createElement("div");
+    bottomPortion.classList.add("bottomPortion");
+
+    const deleteList = document.createElement("div");
+    deleteList.classList.add("deleteList");
+    const deleteIcon = document.createElement("h2");
+    deleteIcon.textContent = "🗑️";
+    deleteList.appendChild(deleteIcon);
+
+    // Add the edit button
+    const editButton = document.createElement("div");
+    editButton.classList.add("editButton");
+    const editIcon = document.createElement("h2");
+    editIcon.textContent = "📝";
+    editButton.appendChild(editIcon);
+
+    const likeCount = document.createElement("div");
+    likeCount.classList.add("likeCount");
+    const heart = document.createElement("p");
+    heart.classList.add("heart", "noLike");
+    heart.textContent = "🖤";
+    const count = document.createElement("p");
+    count.textContent = newPlaylist.likeCount;
+    likeCount.appendChild(heart);
+    likeCount.appendChild(count);
+
+    bottomPortion.appendChild(deleteList);
+    bottomPortion.appendChild(editButton); // Append the edit button
     bottomPortion.appendChild(likeCount);
 
     const id = document.createElement("p");
@@ -350,6 +395,39 @@ function addPlaylist(playlist_name, playlist_author, playlist_art, songs) {
                 songContainer.appendChild(temp);
             });
         }
+    });
+
+    // Attach event listener to the edit button
+    editButton.addEventListener("click", function(event) {
+        event.stopPropagation();
+        // Add your edit functionality here
+        console.log("Edit button clicked for playlist:", newPlaylist.playlist_name);
+        // Example: Toggle input fields for editing
+        const titleInput = document.createElement("input");
+        titleInput.type = "text";
+        titleInput.value = newPlaylist.playlist_name;
+        title.replaceWith(titleInput);
+
+        const authorInput = document.createElement("input");
+        authorInput.type = "text";
+        authorInput.value = newPlaylist.playlist_author;
+        author.replaceWith(authorInput);
+
+        titleInput.addEventListener("keydown", function(e) {
+            if (e.key === "Enter") {
+                newPlaylist.playlist_name = titleInput.value;
+                title.textContent = titleInput.value;
+                titleInput.replaceWith(title);
+            }
+        });
+
+        authorInput.addEventListener("keydown", function(e) {
+            if (e.key === "Enter") {
+                newPlaylist.playlist_author = authorInput.value;
+                author.textContent = authorInput.value;
+                authorInput.replaceWith(author);
+            }
+        });
     });
 }
 
@@ -596,7 +674,18 @@ function setAddPlaylistButtonListener() {
         event.preventDefault(); // Prevent form submission
         let albumName = document.querySelector("#pNameInput").value;
         let albumAuthor = document.querySelector("#aNameInput").value;
-        let albumArt = document.querySelector("#pImgInput").files[0] ? URL.createObjectURL(document.querySelector("#pImgInput").files[0]) : '';
+        let albumArt;
+
+        if (document.querySelector("#pImgInput").files[0] === null) {
+            albumArt = "./assets/img/playlists.png";
+        } else {
+            albumArt = URL.createObjectURL(document.querySelector("#pImgInput").files[0]);
+        }
+
+        //albumArt = document.querySelector("#pImgInput").files[0] ? URL.createObjectURL(document.querySelector("#pImgInput").files[0]) : '';
+
+
+
 
         addPlaylist(albumName, albumAuthor, albumArt, songs);
         popup.classList.toggle("hide");
