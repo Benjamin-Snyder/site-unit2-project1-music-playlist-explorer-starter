@@ -3,7 +3,7 @@
 
 Submitted by: Ben Snyder
 
-Estimated time spent: 15 hours spent in total
+Estimated time spent: 23 hours spent in total
 
 Deployed Application (**required**): [Music Playlist Explorer Deployed Site](https://benplaylistexplorer.onrender.com)
 
